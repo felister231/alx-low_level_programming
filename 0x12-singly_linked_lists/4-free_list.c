@@ -7,14 +7,14 @@
  */
 void free_list(list_t *head)
 {
-	list_t *current = head;
-	list_t *next;
+	list_t *temp;
 
-	while (current != NULL)
+	while (head)
 	{
-		next = current->next;  /* Store next ptr b4 freeing the current node */
-		free(current->str);    /* Free the string */
-		free(current);         /* Free the current node */
-		current = next;        /* Move to the next node */
+		temp = head->next;
+		free(head->str);
+		free(head);
+		head = temp;
 	}
 }
+
